@@ -10,6 +10,10 @@ import openai
 import os
 from dotenv import load_dotenv
 from PIL import Image
+from gtts import gTTS
+from io import BytesIO
+import base64
+
 
 
 # Load the service account json file
@@ -42,7 +46,7 @@ load_dotenv()
 SECRET_KEY = os.getenv("OPEN_AI_KEY")
 openai.api_key = SECRET_KEY
 
-st.title(":green[GyanAI]")
+st.title(":green[Gyan Chat]")
 
 ## Store LLM generated responses
 if "messages" not in st.session_state.keys():
@@ -86,13 +90,16 @@ def generate_prompt(user_input, response):
     f"""Based on the Examples provided, extract the central theme of the most recent conversation, based on which generate a prompt giving vivid descriptions for Dall-E so that it can generate an image related to the topic for a 7 year old to help visualize and learn.
 
     input: what is space?
-    output: A picture of a dark blue sky with stars and planets. The stars are different colors and sizes. The planets are different shapes and sizes.
+    response: Space is all around us. It's the place where everything happens, like the planets, stars, and galaxies.
+    output_prompt: A picture of a dark blue sky with stars and planets. The stars are different colors and sizes. The planets are different shapes and sizes.
 
-    input: what is 2+2?
-    output: A picture of 2 balls on a desk and 2 balls on a chair. The desk and chair are next to each other. There is a plus sign between the two objects. The answer 4 balls is written covering the background.
+    input: what is a house?
+    response: That's a great question! A house is a building where people live. It has rooms for sleeping, eating, and playing.
+    output_prompt: A picture of a house with a red roof and white walls. The house has a front door and two windows.
 
     input: {user_input}
-    output: {response}
+    response: {response}
+    output_prompt: 
     """,
         **parameters
     )
@@ -120,6 +127,15 @@ if st.session_state.messages[-1]["role"] != "assistant":
                 # Add a blinking cursor to simulate typing
                 message_placeholder.markdown(full_response + "▌")
             message_placeholder.markdown(full_response)
+
+            answer = full_response
+            tts = gTTS(answer, lang='en', tld='co.in')
+            tts.save('answer.wav')
+            audio_byte = BytesIO()
+            tts.write_to_fp(audio_byte)
+            audio_byte.seek(0)
+
+            st.audio(audio_byte, format="audio/wav")
             dalle_prompt = generate_prompt(prompt, response)
             image_gen = openai.Image.create(
                 prompt=dalle_prompt,
@@ -128,7 +144,7 @@ if st.session_state.messages[-1]["role"] != "assistant":
             )
             image_url = image_gen['data'][0]['url']
             st.image(image_url)
+    
 
     message = {"role": "assistant", "content": response}
     st.session_state.messages.append(message)
-
