@@ -18,4 +18,10 @@ vertexai==0.0.1
 starlette==0.27.0
 google-cloud-aiplatform==1.27.1
 uvicorn==0.22.0
+openai
+streamlit
+python-dotenv
+gTTS
+audio-recorder-streamlit
+PyPDF2
 
