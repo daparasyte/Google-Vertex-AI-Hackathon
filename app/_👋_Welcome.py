@@ -32,10 +32,11 @@ explanation to support your learning. Get ready to improve your language skills 
 [Visit Gyan Speak](/Gyan_Speak)
 """)
 
-expander = st.expander("Chat 🤖")
+expander = st.expander("Gyan Chat 🤖")
 expander.markdown("""
 With :red[Gyan Chat] you can now interact with out Gyan assistant to learn and explore new
 things together.
+
 [Visit Gyan Chat](/Gyan_Chat)
 """)
 
@@ -44,6 +45,7 @@ expander.markdown("""
 Multiple studies have shown that the roots in the ability to communicate lies in the availability of
 social environments during the infancy stage. With :red[Gyan Community] you can now connect and interact 
 with your peers to learn and explore new things together.
+
 [Visit Gyan Community](/Gyan_Community)
 """)
 
