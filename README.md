@@ -43,26 +43,12 @@ In the file `service_account.json` paste the content of your service account jso
 
 You can find your service account json file in the Vertex AI console under `Settings > Service account` or you got it provided by lablab.ai (If you are part of the Google Vertex AI hackathon )
 
-### Start the server and test
+### Entering OpenAI Key:
 
-Once you have installed the dependencies, you can start the server by running: `uvicorn main:app --reload --port 8080` in the `app` directory.
-When the server is running, you can test it by going to `http://localhost:8080/docs` in your browser. You should see the Swagger UI where you can test the endpoints.
+Please enter your OpenAI api key in the .env file
 
-![image](https://github.com/lablab-ai/Google-VertexAI-FastAPI/assets/2171273/13df1172-0b77-43f3-85a0-0bf936bbd8db)
-![image](https://github.com/lablab-ai/Google-VertexAI-FastAPI/assets/2171273/e69f7892-6945-4d85-987e-dbbc23e553bd)
+### Running The App
+```
+streamlit run _👋_Welcome.py
+```
 
-Good luck! and don't forget to star this repo if you like it!
-
-**Thank you** for reading! If you enjoyed this tutorial you can find more and continue reading
-[on our tutorial page](https://lablab.ai/t/)
-
----
-
-[![Artificial Intelligence Hackathons, tutorials and Boilerplates](https://storage.googleapis.com/lablab-static-eu/images/github/lablab-banner.jpg)](https://lablab.ai)
-
-## Join the LabLab Discord
-
-![Discord Banner 1](https://discordapp.com/api/guilds/877056448956346408/widget.png?style=banner1)  
-On lablab discord, we discuss this repo and many other topics related to artificial intelligence! Checkout upcoming [Artificial Intelligence Hackathons](https://lablab.ai) Event
-
-[![Acclerating innovation through acceleration](https://storage.googleapis.com/lablab-static-eu/images/github/nn-group-loggos.jpg)](https://newnative.ai)
